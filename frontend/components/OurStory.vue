@@ -8,26 +8,25 @@
   </section>
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
-  <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-    <source src="/video/kedua.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <div class="relative z-10 max-w-2xl">
-    <p class="text-white  mb-6 text-2xl font-[txt] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-      وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا 
-      لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ 
-      اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ 
-    </p>
-    <p class="text-xl leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
-      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
-      untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan
-      Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
-      benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-      <span class="block mt-2">(<i>Q.S. Ar-Rum: 21</i>)</span>
-    </p>
-  </div>
-</section>
-
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/kedua.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="relative z-10 max-w-2xl">
+      <p class="text-white  mb-6 text-2xl font-[txt] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا 
+        لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ 
+        اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ 
+      </p>
+      <p class="text-xl leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
+        untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan
+        Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
+        benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+        <span class="block mt-2">(<i>Q.S. Ar-Rum: 21</i>)</span>
+      </p>
+    </div>
+  </section>
 
   <section class="relative bg-black text-white text-center">
     <div>
@@ -167,6 +166,98 @@
     </div>
   </section>
 
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex flex-col items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-keenam.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute bottom-[260px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+      <div class="text-white text-lg font-[txt] leading-relaxed">
+        <p class="text-2xl mt-10">Sabtu, 30 Agustus 2025</p>
+        <p class="mt-5">Pukul 11.00 WIB s.d Selesai</p>
+        <p class="mt-5">Bertempat di <br> Kp. Ci Pangawaren RT 09/02 <br> Pasir Panjang, Ciracap</p>
+        <div class="text-center mt-10">
+          <button
+            @click="addToCalendar"
+            class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+          >
+            Lihat Peta Lokasi
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-ketujuh.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="relative z-10 max-w-2xl">
+      <p class="text-white mb-6 text-4xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Konfirmasi Kehadiran
+      </p>
+      <p class="text-lg leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+        Harap Konfirmasi kehadiran Anda sebelum <br> 28 Agustus 2025
+      </p>
+
+      <div class="mt-10">
+        <p class="text-lg leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+          Apakah kamu akan hadir?
+        </p>
+        <div class="text-center mt-5 flex flex-col space-y-2">
+          <button
+            @click="setAttendance(true)"
+            :class="['bg-white/10 font-[txt] backdrop-blur-sm border w-full border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105', isAttending === true ? 'bg-white/30' : '']"
+          >
+            Hadir
+          </button>
+          <button
+            @click="setAttendance(false)"
+            :class="['bg-white/10 font-[txt] backdrop-blur-sm border w-full border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105', isAttending === false ? 'bg-white/30' : '']"
+          >
+            Tidak Hadir
+          </button>
+        </div>
+
+        <!-- Input jumlah tamu muncul hanya jika hadir -->
+        <div v-if="isAttending" class="mt-10">
+          <p class="text-lg leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+            Jumlah tamu yang akan hadir termasuk kamu?
+          </p>
+          <div class="flex items-center justify-center mt-5 space-x-4">
+            <button
+              @click="decrement"
+              class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              class="bg-white/10 font-[txt] backdrop-blur-sm border w-40 text-center border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+              v-model.number="guestCount"
+              min="1"
+            />
+            <button
+              @click="increment"
+              class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <button
+          class="mt-10 bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
+        >
+          Konfirmasi Kehadiran
+        </button>
+      </div>
+    </div>
+  </section>
+
 </template>
 
 <script setup>
@@ -253,6 +344,22 @@ function addToCalendar() {
   const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`
   
   window.open(url, "_blank")
+}
+
+const isAttending = ref(null) // null = belum pilih, true = hadir, false = tidak hadir
+const guestCount = ref(1)
+
+function setAttendance(value) {
+  isAttending.value = value
+  if (!value) guestCount.value = 1 // reset jika pilih tidak hadir
+}
+
+function increment() {
+  guestCount.value++
+}
+
+function decrement() {
+  if (guestCount.value > 1) guestCount.value--
 }
 </script>
 
