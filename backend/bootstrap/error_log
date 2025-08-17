@@ -1,0 +1,16 @@
+[26-Dec-2024 21:08:26 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php on line 7
+[26-Dec-2024 21:08:30 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php on line 7
+[26-Dec-2024 21:08:42 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php on line 7
+[26-Dec-2024 21:12:47 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/bootstrap/app.php on line 7

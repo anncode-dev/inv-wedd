@@ -1,0 +1,20 @@
+[26-Dec-2024 23:56:43 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php on line 8
+[26-Dec-2024 23:56:51 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php on line 8
+[26-Dec-2024 23:57:00 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php on line 8
+[26-Dec-2024 23:57:10 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php on line 8
+[26-Dec-2024 23:57:23 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Feature/ExampleTest.php on line 8

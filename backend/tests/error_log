@@ -1,0 +1,36 @@
+[26-Dec-2024 21:08:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 21:08:35 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 21:08:37 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 21:12:32 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 22:59:14 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 22:59:22 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 22:59:31 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 22:59:41 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7
+[26-Dec-2024 22:59:53 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/TestCase.php on line 7

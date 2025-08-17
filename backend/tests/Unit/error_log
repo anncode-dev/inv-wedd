@@ -1,0 +1,20 @@
+[26-Dec-2024 23:56:44 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php on line 7
+[26-Dec-2024 23:56:53 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php on line 7
+[26-Dec-2024 23:57:03 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php on line 7
+[26-Dec-2024 23:57:13 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php on line 7
+[26-Dec-2024 23:57:26 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/tests/Unit/ExampleTest.php on line 7

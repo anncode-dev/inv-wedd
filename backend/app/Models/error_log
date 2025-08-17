@@ -1,0 +1,16 @@
+[26-Dec-2024 23:56:47 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php on line 11
+[26-Dec-2024 23:56:55 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php on line 11
+[26-Dec-2024 23:57:08 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php on line 11
+[26-Dec-2024 23:57:22 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Models/User.php on line 11

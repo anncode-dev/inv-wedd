@@ -1,0 +1,12 @@
+#nova header svg.h-6 {
+	height: auto;
+	width: 70% !important;
+}
+#nova header a.text-red-500 {
+	display: none;
+}
+@media (max-width: 810px) {
+	#nova header svg.h-6 {
+		display: none;
+	}
+}

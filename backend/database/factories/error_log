@@ -1,0 +1,20 @@
+[26-Dec-2024 23:56:35 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Factories\Factory" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php on line 12
+[26-Dec-2024 23:56:43 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Factories\Factory" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php on line 12
+[26-Dec-2024 23:56:52 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Factories\Factory" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php on line 12
+[26-Dec-2024 23:57:02 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Factories\Factory" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php on line 12
+[26-Dec-2024 23:57:14 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Factories\Factory" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/database/factories/UserFactory.php on line 12
