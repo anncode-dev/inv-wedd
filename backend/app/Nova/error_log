@@ -1,0 +1,40 @@
+[26-Dec-2024 23:56:44 UTC] PHP Fatal error:  Uncaught Error: Class "App\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php on line 14
+[26-Dec-2024 23:56:44 UTC] PHP Fatal error:  Uncaught Error: Class "Laravel\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php on line 8
+[26-Dec-2024 23:56:53 UTC] PHP Fatal error:  Uncaught Error: Class "App\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php on line 14
+[26-Dec-2024 23:56:53 UTC] PHP Fatal error:  Uncaught Error: Class "Laravel\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php on line 8
+[26-Dec-2024 23:57:02 UTC] PHP Fatal error:  Uncaught Error: Class "App\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php on line 14
+[26-Dec-2024 23:57:03 UTC] PHP Fatal error:  Uncaught Error: Class "Laravel\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php on line 8
+[26-Dec-2024 23:57:13 UTC] PHP Fatal error:  Uncaught Error: Class "App\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php on line 14
+[26-Dec-2024 23:57:14 UTC] PHP Fatal error:  Uncaught Error: Class "Laravel\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php on line 8
+[26-Dec-2024 23:57:26 UTC] PHP Fatal error:  Uncaught Error: Class "App\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/User.php on line 14
+[26-Dec-2024 23:57:27 UTC] PHP Fatal error:  Uncaught Error: Class "Laravel\Nova\Resource" not found in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/bankkalsel/staging.bankkalsel.web.id/backend/app/Nova/Resource.php on line 8

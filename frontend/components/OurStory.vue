@@ -203,10 +203,14 @@
         Harap Konfirmasi kehadiran Anda sebelum <br> 28 Agustus 2025
       </p>
 
-      <div class="mt-10">
+      <div v-if="successMessage" class="mt-10 text-white font-semibold">
+        <p class="bg-white/20 font-[txt] backdrop-blur-sm border w-full border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105">{{ successMessage }}</p>
+      </div>
+      <div v-else class="mt-10">
         <p class="text-lg leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
           Apakah kamu akan hadir?
         </p>
+
         <div class="text-center mt-5 flex flex-col space-y-2">
           <button
             @click="setAttendance(true)"
@@ -250,6 +254,7 @@
         </div>
 
         <button
+          @click="submitRSVP"
           class="mt-10 bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
         >
           Konfirmasi Kehadiran
@@ -288,7 +293,7 @@
 
           <!-- Nomor rekening + tombol copy -->
           <div class="flex flex-col items-center mt-2 space-y-1">
-            <p class="text-2xl font-[txt] pb-5">1234567890</p>
+            <p class="text-2xl font-[txt] pb-5">7151745192</p>
             <button
                 @click="copyAccount"
                 class="flex justify-center items-center space-x-3 bg-white/10 font-[txt] max-w-max backdrop-blur-sm border border-white text-white px-6 py-2 rounded-full text-base  transition-transform"
@@ -310,35 +315,73 @@
     </div>
   </section>
 
-  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
-    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="/video/bagian-kesembilan.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <section
+  class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center"
+>
+  <!-- Background Video -->
+  <video
+    ref="bgVideo"
+    autoplay
+    muted
+    playsinline
+    class="absolute top-0 left-0 w-full h-full object-cover"
+  >
+    <source src="/video/bagian-kesembilan.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-    <div class="relative z-10 max-w-2xl">
-      <p class="text-white mb-6 text-4xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-        Doa restu untuk kedua mempelai.
-      </p>
-      <p class="text-base px-10 leading-relaxed font-[txt]" data-aos="fade-up" data-aos-delay="200">
-        Silakan untuk memberikan doa dan ucapan
-      </p>
+  <div class="relative z-10 max-w-2xl">
+    <p
+      class="text-white mb-6 text-4xl font-[hdr] leading-relaxed"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      Doa restu untuk kedua mempelai.
+    </p>
+    <p
+      class="text-base px-10 leading-relaxed font-[txt]"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      Silakan untuk memberikan doa dan ucapan
+    </p>
 
-      <div class="mt-10 px-2">
-        <div class="text-center mt-5 flex flex-col space-y-2">
-          <input
-            type="text"
-            placeholder="Tulis doa dan ucapanmu di sini..."
-            class="bg-white font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full w-full max-w-md"/>
-          <button
-            class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
-          >
-            Kirim Ucapan
-          </button>
-        </div>
+    <!-- Form Ucapan -->
+    <div class="mt-10 px-2">
+      <div class="text-center mt-5 flex flex-col space-y-2">
+        <input
+          v-model="name"
+          type="text"
+          placeholder="Nama kamu..."
+          class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full w-full max-w-md"
+        />
+        <textarea
+          v-model="message"
+          placeholder="Tulis doa dan ucapanmu di sini..."
+          class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-2xl w-full max-w-md"
+        ></textarea>
+        <button
+          @click="submitUcapan"
+          class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
+        >
+          Kirim Ucapan
+        </button>
       </div>
     </div>
-  </section>
+
+    <!-- Daftar Ucapan -->
+    <div class="mt-10 text-left max-h-64 overflow-y-auto px-4">
+      <div
+        v-for="ucapan in ucapanList"
+        :key="ucapan.id"
+        class="bg-white/10 backdrop-blur-sm border border-white rounded-xl p-4 mb-3"
+      >
+        <p class="font-bold">{{ ucapan.name }}</p>
+        <p class="text-sm">{{ ucapan.message }}</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
@@ -349,12 +392,58 @@
 
 </template>
 
+<script>
+import { db } from "@/firebase";
+import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
+
+export default {
+  data() {
+    return {
+      name: "",
+      message: "",
+      ucapanList: []
+    };
+  },
+  methods: {
+    async submitUcapan() {
+      if (!this.name || !this.message) {
+        alert("Nama dan ucapan wajib diisi!");
+        return;
+      }
+      try {
+        await addDoc(collection(db, "ucapan"), {
+          name: this.name,
+          message: this.message,
+          createdAt: serverTimestamp()
+        });
+        this.name = "";
+        this.message = "";
+      } catch (err) {
+        console.error("Gagal simpan ucapan:", err);
+      }
+    }
+  },
+  mounted() {
+    const q = query(collection(db, "ucapan"), orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      this.ucapanList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    });
+  }
+};
+</script>
+
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Gallery from '@/components/Gallery.vue'
 import { useHead } from '@vueuse/head'
+import { db } from '@/firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+
 
 const route = useRoute()
 
@@ -378,9 +467,6 @@ useHead({
     { name: 'twitter:image', content: imageUrl }
   ]
 })
-
-
-
 
 // Countdown Logic
 const days = ref(0)
@@ -472,24 +558,43 @@ function addToCalendar() {
 
   window.open(url, "_blank");
 }
-
-
-const isAttending = ref(null) // null = belum pilih, true = hadir, false = tidak hadir
+const isAttending = ref(null)
+const successMessage = ref('')
 const guestCount = ref(1)
 
+// Tombol hadir / tidak hadir
 function setAttendance(value) {
   isAttending.value = value
-  if (!value) guestCount.value = 1 // reset jika pilih tidak hadir
+  if (!value) guestCount.value = 0
 }
 
-function increment() {
-  guestCount.value++
+// Tambah / kurang jumlah tamu
+function increment() { guestCount.value++ }
+function decrement() { if (guestCount.value > 1) guestCount.value-- }
+
+// Submit ke Firestore
+async function submitRSVP() {
+  if (isAttending.value === null) {
+    alert("Silakan pilih Hadir atau Tidak Hadir")
+    return
+  }
+
+  try {
+    await addDoc(collection(db, 'rsvp'), {
+      hadir: isAttending.value,
+      jumlah_tamu: guestCount.value,
+      createdAt: serverTimestamp()
+    })
+    successMessage.value = 'Terimakasih! Kehadiran Anda telah tercatat.'
+    isAttending.value = null
+    guestCount.value = 1
+  } catch (err) {
+    console.error("Gagal simpan RSVP:", err)
+    alert("Gagal menyimpan data, silakan coba lagi.")
+  }
 }
 
-function decrement() {
-  if (guestCount.value > 1) guestCount.value--
-}
-const accountNumber = '1234567890'
+const accountNumber = '7151745192'
 const copied = ref(false)
 
 function copyAccount() {

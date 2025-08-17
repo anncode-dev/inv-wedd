@@ -37,19 +37,29 @@
 
 <script setup>
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { db } from '@/firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 const show = ref(false)
 const showIntro = ref(true)
 const hideIntro = ref(false)
 const guestName = ref('Tamu Undangan')
 let audio = null
-
 const musicUrl = '/music/music.mp3'
 
-onMounted(() => {
-  const params = new URLSearchParams(window.location.search)
-  const to = params.get('to')
-  if (to) guestName.value = decodeURIComponent(to)
+const route = useRoute()
+
+// 🔹 Ambil kode unik dari URL dan fetch nama tamu dari Firebase
+onMounted(async () => {
+  const kode = route.params.kode
+  if (kode) {
+    const docRef = doc(db, 'tamu', kode)
+    const docSnap = await getDoc(docRef)
+    if (docSnap.exists()) {
+      guestName.value = docSnap.data().nama
+    }
+  }
 
   // Lock scroll
   document.documentElement.classList.add('noscroll')
@@ -60,7 +70,7 @@ onMounted(() => {
   }, 500)
 })
 
-// Play musik saat klik tombol
+// 🔹 Play musik & buka halaman utama
 async function handleOpenInvitation() {
   if (!audio) {
     audio = new Audio(musicUrl)
@@ -88,14 +98,11 @@ async function handleOpenInvitation() {
   }, 600)
 }
 
-// 🔴 Stop / pause musik saat user keluar tab
+// 🔹 Stop / resume musik saat user keluar tab
 function handleVisibilityChange() {
   if (!audio) return
-  if (document.hidden) {
-    audio.pause()
-  } else {
-    audio.play().catch(() => {}) // opsional: play lagi saat kembali
-  }
+  if (document.hidden) audio.pause()
+  else audio.play().catch(() => {})
 }
 
 onMounted(() => {
