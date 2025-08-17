@@ -50,7 +50,7 @@
       </p>
       <hr class="border-2 border-white mx-40 rounded-full my-6">
       <p class="text-xl mt-2 leading-relaxed font-[txt] px-5" data-aos="fade-up" data-aos-delay="200">
-        Putri ke empat dari <br> Bapak Koyan & Ibu Enung
+        Putri keempat dari <br> Bapak Koyan & Ibu Enung
       </p>
     </div>
   </section>
@@ -74,7 +74,7 @@
       </p>
       <hr class="border-2 border-white mx-40 rounded-full my-6">
       <p class="text-xl mt-2 leading-relaxed font-[txt] px-5" data-aos="fade-up" data-aos-delay="200">
-        Putri ke empat dari <br> Bapak Joni & Ibu Erna
+        Putra pertama dari <br> Bapak Joni & Ibu Ernawati
       </p>
     </div>
   </section>
@@ -155,7 +155,7 @@
         <p class="mt-5">Bertempat di <br> Kp. Ci Pangawaren RT 09/02 <br> Pasir Panjang, Ciracap</p>
         <div class="text-center mt-10">
           <button
-            @click="addToCalendar"
+            @click="openMap"
             class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
           >
             Lihat Peta Lokasi
@@ -178,7 +178,7 @@
         <p class="mt-5">Bertempat di <br> Kp. Ci Pangawaren RT 09/02 <br> Pasir Panjang, Ciracap</p>
         <div class="text-center mt-10">
           <button
-            @click="addToCalendar"
+            @click="openMap"
             class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
           >
             Lihat Peta Lokasi
@@ -369,18 +369,17 @@
       </div>
     </div>
 
-    <!-- Daftar Ucapan -->
-    <div class="mt-10 text-left max-h-64 overflow-y-auto px-4">
-      <div
-        v-for="ucapan in ucapanList"
-        :key="ucapan.id"
-        class="bg-white/10 backdrop-blur-sm border border-white rounded-xl p-4 mb-3"
-      >
-        <p class="font-bold">{{ ucapan.name }}</p>
-        <p class="text-sm">{{ ucapan.message }}</p>
-      </div>
+   <div class="mt-10 text-left max-h-64 overflow-y-auto px-4">
+    <div
+      v-for="ucapan in ucapanList"
+      :key="ucapan?.id"
+      class="bg-white/10 backdrop-blur-sm border border-white rounded-xl p-4 mb-3"
+    >
+      <p class="font-bold" v-if="ucapan?.name">{{ ucapan.name }}</p>
+      <p class="text-sm" v-if="ucapan?.message">{{ ucapan.message }}</p>
     </div>
-  </div>
+</div>
+</div>
 </section>
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
@@ -393,232 +392,236 @@
 </template>
 
 <script>
-import { db } from "@/firebase";
-import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
+  import { db } from "@/firebase";
+  import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
 
-export default {
-  data() {
-    return {
-      name: "",
-      message: "",
-      ucapanList: []
-    };
-  },
-  methods: {
-    async submitUcapan() {
-      if (!this.name || !this.message) {
-        alert("Nama dan ucapan wajib diisi!");
-        return;
+  export default {
+    data() {
+      return {
+        name: "",
+        message: "",
+        ucapanList: []
+      };
+    },
+    methods: {
+      async submitUcapan() {
+        if (!this.name || !this.message) {
+          alert("Nama dan ucapan wajib diisi!");
+          return;
+        }
+        try {
+          await addDoc(collection(db, "ucapan"), {
+            name: this.name,
+            message: this.message,
+            createdAt: serverTimestamp()
+          });
+          this.name = "";
+          this.message = "";
+        } catch (err) {
+          console.error("Gagal simpan ucapan:", err);
+        }
       }
-      try {
-        await addDoc(collection(db, "ucapan"), {
-          name: this.name,
-          message: this.message,
-          createdAt: serverTimestamp()
-        });
-        this.name = "";
-        this.message = "";
-      } catch (err) {
-        console.error("Gagal simpan ucapan:", err);
-      }
+    },
+    mounted() {
+      const q = query(collection(db, "ucapan"), orderBy("createdAt", "desc"));
+      onSnapshot(q, (snapshot) => {
+        this.ucapanList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+      });
     }
-  },
-  mounted() {
-    const q = query(collection(db, "ucapan"), orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-      this.ucapanList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-    });
-  }
-};
+  };
 </script>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import Gallery from '@/components/Gallery.vue'
-import { useHead } from '@vueuse/head'
-import { db } from '@/firebase'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+    import { ref, onMounted, onBeforeUnmount } from 'vue'
+    import AOS from 'aos'
+    import 'aos/dist/aos.css'
+    import Gallery from '@/components/Gallery.vue'
+    import { useHead } from '@vueuse/head'
+    import { db } from '@/firebase'
+    import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 
-const route = useRoute()
+    const route = useRoute()
 
-const to = useRoute().query.to
-if (to) guestName.value = decodeURIComponent(to)
+    const to = useRoute().query.to
+    if (to) guestName.value = decodeURIComponent(to)
 
-// Gunakan URL absolut statis untuk server-side
-const imageUrl = 'https://inv-wedd.vercel.app/images/gambar-1.jpg'
+    // Gunakan URL absolut statis untuk server-side
+    const imageUrl = 'https://inv-wedd.vercel.app/images/gambar-1.jpg'
 
-useHead({
-  title: 'Siti&Angga | anncode.dev',
-  meta: [
-    { property: 'og:title', content: 'Siti&Angga | anncode.dev' },
-    { property: 'og:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
-    { property: 'og:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' },
-    { property: 'og:url', content: 'https://inv-wedd.vercel.app/' },
-    { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Siti&Angga | anncode.dev' },
-    { name: 'twitter:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
-    { name: 'twitter:image', content: imageUrl }
-  ]
-})
-
-// Countdown Logic
-const days = ref(0)
-const hours = ref(0)
-const minutes = ref(0)
-const seconds = ref(0)
-const targetDate = new Date('2025-08-30T00:00:00')
-let countdownInterval = null
-
-function updateCountdown() {
-  const now = new Date()
-  const timeDiff = targetDate - now
-  if (timeDiff <= 0) {
-    clearInterval(countdownInterval)
-    days.value = hours.value = minutes.value = seconds.value = 0
-    return
-  }
-  days.value = Math.floor(timeDiff / (1000 * 60 * 60 * 24))
-  hours.value = Math.floor((timeDiff / (1000 * 60 * 60)) % 24)
-  minutes.value = Math.floor((timeDiff / (1000 * 60)) % 60)
-  seconds.value = Math.floor((timeDiff / 1000) % 60)
-}
-
-const countdownRef = ref(null)
-const isCountdownVisible = ref(false)
-
-onMounted(() => {
-  AOS.init({ duration: 800, once: true })
-  updateCountdown()
-  countdownInterval = setInterval(updateCountdown, 1000)
-
-  const countdownObserver = new IntersectionObserver(
-    (entries) => {
-      isCountdownVisible.value = entries[0].isIntersecting
-    },
-    { threshold: 0.3 }
-  )
-  if (countdownRef.value) countdownObserver.observe(countdownRef.value)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(countdownInterval)
-})
-
-const photos = ref([
-  'https://plus.unsplash.com/premium_photo-1675851211463-7b04cd066e10?q=80&w=687&auto=format&fit=crop',
-  'https://plus.unsplash.com/premium_photo-1675851211519-fc13d860e103?q=80&w=687&auto=format&fit=crop',
-  'https://plus.unsplash.com/premium_photo-1675851211768-f8b9296ed7bd?q=80&w=687&auto=format&fit=crop',
-])
-
-const currentIndex = ref(0)
-
-onMounted(() => {
-  AOS.init({
-    duration: 800,
-    once: false,
-    offset: -100,
-    easing: 'ease-in-out',
-  })
-
-  // Slideshow otomatis setiap 5 detik
-  setInterval(() => {
-    currentIndex.value = (currentIndex.value + 1) % photos.value.length
-  }, 5000)
-})
-
-// Data acara
-const eventTitle = 'Undangan Pernikahan Siti Santia & Pasangan'
-const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.'
-const eventLocation = 'Jl. Contoh No.1, Jakarta'
-
-// Format tanggal harus YYYYMMDDTHHmmssZ (UTC)
-const eventStart = '20250828T090000Z' // 28 Agustus 2025, 09:00 UTC
-const eventEnd = '20250828T120000Z'   // 28 Agustus 2025, 12:00 UTC
-
-function addToCalendar() {
-  const eventTitle = 'Undangan Pernikahan Siti & Angga';
-  const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.';
-  const eventLocation = 'Jl. Contoh No.1, Jakarta';
-
-  // Format tanggal untuk Google Calendar: YYYYMMDDTHHmmssZ
-  const eventStart = '20250828T090000Z'; // 28 Agustus 2025 09:00 UTC
-  const eventEnd = '20250828T120000Z';   // 28 Agustus 2025 12:00 UTC
-
-  const start = eventStart.replace(/-|:|\.\d+/g, '');
-  const end = eventEnd.replace(/-|:|\.\d+/g, '');
-
-  const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
-
-  window.open(url, "_blank");
-}
-const isAttending = ref(null)
-const successMessage = ref('')
-const guestCount = ref(1)
-
-// Tombol hadir / tidak hadir
-function setAttendance(value) {
-  isAttending.value = value
-  if (!value) guestCount.value = 0
-}
-
-// Tambah / kurang jumlah tamu
-function increment() { guestCount.value++ }
-function decrement() { if (guestCount.value > 1) guestCount.value-- }
-
-// Submit ke Firestore
-async function submitRSVP() {
-  if (isAttending.value === null) {
-    alert("Silakan pilih Hadir atau Tidak Hadir")
-    return
-  }
-
-  try {
-    await addDoc(collection(db, 'rsvp'), {
-      hadir: isAttending.value,
-      jumlah_tamu: guestCount.value,
-      createdAt: serverTimestamp()
+    useHead({
+      title: 'Siti&Angga | anncode.dev',
+      meta: [
+        { property: 'og:title', content: 'Siti&Angga | anncode.dev' },
+        { property: 'og:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
+        { property: 'og:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' },
+        { property: 'og:url', content: 'https://inv-wedd.vercel.app/' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Siti&Angga | anncode.dev' },
+        { name: 'twitter:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
+        { name: 'twitter:image', content: imageUrl }
+      ]
     })
-    successMessage.value = 'Terimakasih! Kehadiran Anda telah tercatat.'
-    isAttending.value = null
-    guestCount.value = 1
-  } catch (err) {
-    console.error("Gagal simpan RSVP:", err)
-    alert("Gagal menyimpan data, silakan coba lagi.")
-  }
-}
 
-const accountNumber = '7151745192'
-const copied = ref(false)
+    // Countdown Logic
+    const days = ref(0)
+    const hours = ref(0)
+    const minutes = ref(0)
+    const seconds = ref(0)
+    const targetDate = new Date('2025-08-30T00:00:00')
+    let countdownInterval = null
 
-function copyAccount() {
-  navigator.clipboard.writeText(accountNumber)
-    .then(() => {
-      copied.value = true
-      // hilangkan teks setelah 2 detik
-      setTimeout(() => {
-        copied.value = false
-      }, 2000)
+    function updateCountdown() {
+      const now = new Date()
+      const timeDiff = targetDate - now
+      if (timeDiff <= 0) {
+        clearInterval(countdownInterval)
+        days.value = hours.value = minutes.value = seconds.value = 0
+        return
+      }
+      days.value = Math.floor(timeDiff / (1000 * 60 * 60 * 24))
+      hours.value = Math.floor((timeDiff / (1000 * 60 * 60)) % 24)
+      minutes.value = Math.floor((timeDiff / (1000 * 60)) % 60)
+      seconds.value = Math.floor((timeDiff / 1000) % 60)
+    }
+
+    const countdownRef = ref(null)
+    const isCountdownVisible = ref(false)
+
+    onMounted(() => {
+      AOS.init({ duration: 800, once: true })
+      updateCountdown()
+      countdownInterval = setInterval(updateCountdown, 1000)
+
+      const countdownObserver = new IntersectionObserver(
+        (entries) => {
+          isCountdownVisible.value = entries[0].isIntersecting
+        },
+        { threshold: 0.3 }
+      )
+      if (countdownRef.value) countdownObserver.observe(countdownRef.value)
     })
-    .catch(() => {
-      alert('Gagal menyalin nomor rekening.')
-    })
-}
 
+    onBeforeUnmount(() => {
+      clearInterval(countdownInterval)
+    })
+
+    const photos = ref([
+      'https://plus.unsplash.com/premium_photo-1675851211463-7b04cd066e10?q=80&w=687&auto=format&fit=crop',
+      'https://plus.unsplash.com/premium_photo-1675851211519-fc13d860e103?q=80&w=687&auto=format&fit=crop',
+      'https://plus.unsplash.com/premium_photo-1675851211768-f8b9296ed7bd?q=80&w=687&auto=format&fit=crop',
+    ])
+
+    const currentIndex = ref(0)
+
+    onMounted(() => {
+      AOS.init({
+        duration: 800,
+        once: false,
+        offset: -100,
+        easing: 'ease-in-out',
+      })
+
+      // Slideshow otomatis setiap 5 detik
+      setInterval(() => {
+        currentIndex.value = (currentIndex.value + 1) % photos.value.length
+      }, 5000)
+    })
+
+    // Data acara
+    const eventTitle = 'Undangan Pernikahan Siti Santia & Pasangan'
+    const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.'
+    const eventLocation = 'Jl. Contoh No.1, Jakarta'
+
+    // Format tanggal harus YYYYMMDDTHHmmssZ (UTC)
+    const eventStart = '20250828T090000Z' // 28 Agustus 2025, 09:00 UTC
+    const eventEnd = '20250828T120000Z'   // 28 Agustus 2025, 12:00 UTC
+
+    function addToCalendar() {
+      const eventTitle = 'Undangan Pernikahan Siti & Angga';
+      const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.';
+      const eventLocation = 'Jl. Contoh No.1, Jakarta';
+
+      // Format tanggal untuk Google Calendar: YYYYMMDDTHHmmssZ
+      const eventStart = '20250828T090000Z'; // 28 Agustus 2025 09:00 UTC
+      const eventEnd = '20250828T120000Z';   // 28 Agustus 2025 12:00 UTC
+
+      const start = eventStart.replace(/-|:|\.\d+/g, '');
+      const end = eventEnd.replace(/-|:|\.\d+/g, '');
+
+      const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
+
+      window.open(url, "_blank");
+    }
+    const isAttending = ref(null)
+    const successMessage = ref('')
+    const guestCount = ref(1)
+
+    // Tombol hadir / tidak hadir
+    function setAttendance(value) {
+      isAttending.value = value
+      if (!value) guestCount.value = 0
+    }
+
+    // Tambah / kurang jumlah tamu
+    function increment() { guestCount.value++ }
+    function decrement() { if (guestCount.value > 1) guestCount.value-- }
+
+    // Submit ke Firestore
+    async function submitRSVP() {
+      if (isAttending.value === null) {
+        alert("Silakan pilih Hadir atau Tidak Hadir")
+        return
+      }
+
+      try {
+        await addDoc(collection(db, 'rsvp'), {
+          hadir: isAttending.value,
+          jumlah_tamu: guestCount.value,
+          createdAt: serverTimestamp()
+        })
+        successMessage.value = 'Terimakasih! Kehadiran Anda telah tercatat.'
+        isAttending.value = null
+        guestCount.value = 1
+      } catch (err) {
+        console.error("Gagal simpan RSVP:", err)
+        alert("Gagal menyimpan data, silakan coba lagi.")
+      }
+    }
+
+    const accountNumber = '7151745192'
+    const copied = ref(false)
+
+    function copyAccount() {
+      navigator.clipboard.writeText(accountNumber)
+        .then(() => {
+          copied.value = true
+          // hilangkan teks setelah 2 detik
+          setTimeout(() => {
+            copied.value = false
+          }, 2000)
+        })
+        .catch(() => {
+          alert('Gagal menyalin nomor rekening.')
+        })
+    }
+    const openMap = () => {
+      const address = encodeURIComponent("Kp. Ci Pangawaren RT 09/02, Pasir Panjang, Ciracap");
+      const url = `https://www.google.com/maps/search/?api=1&query=${address}`;
+      window.open(url, "_blank");
+    };
 </script>
 
 <style scoped>
-.countdown p {
-  transition: all 0.3s ease;
-}
+    .countdown p {
+      transition: all 0.3s ease;
+    }
 
-.bg-gradient-black-opacity {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.664), rgba(0, 0, 0, 0.08));
-}
+    .bg-gradient-black-opacity {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.664), rgba(0, 0, 0, 0.08));
+    }
 </style>

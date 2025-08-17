@@ -20,7 +20,6 @@
     <meta property="og:url" content="https://inv-wedd.vercel.app/" />
   </head>
   <div class="relative mx-auto max-w-md min-h-screen font-sans text-gray-900 transition-bg duration-700">
-    <!-- Konten halaman -->
     <div class="relative z-10">
       <IntroSection id="intro" />
       <OurStory />
