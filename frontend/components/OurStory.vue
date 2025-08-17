@@ -7,12 +7,27 @@
     </video>
   </section>
 
-  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
-    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <!-- <source src="/video/Section-Two.MP4" type="video/mp4" /> -->
-      Your browser does not support the video tag.
-    </video>
-  </section>
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+  <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+    <source src="/video/bagian-kedua.MP4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="relative z-10 max-w-2xl">
+    <p class="text-white  mb-6 text-2xl font-[txt] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+      وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا 
+      لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ 
+      اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ 
+    </p>
+    <p class="text-xl leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
+      untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan
+      Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
+      benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+      <span class="block mt-2">(<i>Q.S. Ar-Rum: 21</i>)</span>
+    </p>
+  </div>
+</section>
+
 
   <section class="relative py-5 bg-black text-white text-center">
     <div>
