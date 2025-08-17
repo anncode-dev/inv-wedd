@@ -3,6 +3,12 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "../App.vue";
 
+import { createMetaManager } from 'vue-meta'
+
+const metaManager = createMetaManager()
+app.use(metaManager)
+
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'

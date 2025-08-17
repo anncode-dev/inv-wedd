@@ -1,24 +1,31 @@
 <template>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Siti&Angga | anncode.dev</title>
+  <Head>
+    <Title> FAB Indonesia </Title>
+    <Meta property="og:title" content="FAB Indonesia" />
+    <Meta
+      property="og:description"
+      content="The Largest and Fastest Growing Tech-Based Creative Business Platform"
+    />
+    <Meta
+      name="description"
+      content="The Largest and Fastest Growing Tech-Based Creative Business Platform"
+    />
+    <Meta property="og:type" content="image" />
+    <Meta
+      property="og:image"
+      content="https://invwedding-628de.web.app/images/gambar-1.jpg"
+    />
+    <Meta
+      property="og:image:secure_url"
+      content="https://invwedding-628de.web.app/images/gambar-1.jpg"
+    />
+    <Meta property="og:url" content="https://invwedding-628de.web.app/" />
+    <Meta property="og:image:width" content="600" />
+    <Meta property="og:image:height" content="600" />
+    <meta property="og:url" content="https://invwedding-628de.web.app/" />
+    <link rel="canonical" href="https://invwedding-628de.web.app/" />
+  </Head>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Siti&Angga | anncode.dev" />
-    <meta property="og:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
-    <meta property="og:image" content="https://inv-wedd.vercel.app/images/gambar-1.jpg" />
-    <meta property="og:url" content="https://inv-wedd.vercel.app/" />
-
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Siti&Angga | anncode.dev" />
-    <meta name="twitter:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
-    <meta property="og:image" content="https://inv-wedd.vercel.app/images/gambar-1.jpg" />
-    <meta property="og:url" content="https://inv-wedd.vercel.app/" />
-  </head>
   <div class="relative mx-auto max-w-md min-h-screen font-sans text-gray-900 transition-bg duration-700">
     <div class="relative z-10">
       <IntroSection id="intro" />

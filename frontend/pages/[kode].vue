@@ -1,4 +1,21 @@
 <template>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Siti&Angga | anncode.dev</title>
+
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content="Siti&Angga | anncode.dev" />
+        <meta property="og:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
+        <meta property="og:image" content="https://invwedding-628de.web.app/images/gambar-1.jpg" />
+        <meta property="og:url" content="https://invwedding-628de.web.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://invwedding-628de.web.app/images/gambar-1.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <link rel="icon" href="/favicon.ico" />
+  
+    </head>
   <div>
     <!-- Intro Section -->
     <IntroSection v-if="guestLoaded" :guest-name="guestName" />
@@ -57,13 +74,15 @@ onMounted(async () => {
           meta: [
             { property: 'og:title', content: `Siti&Angga | anncode.dev` },
             { property: 'og:description', content: `Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami.` },
-            { property: 'og:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' },
+            { property: 'og:image', content: 'https://invwedding-628de.web.app/images/gambar-1.jpg' },
             { property: 'og:url', content: window.location.href },
             { property: 'og:type', content: 'website' },
+            { property: 'og:image:width', content: '1200' },
+            { property: 'og:image:height', content: '630' },
             { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'twitter:title', content: `Siti&Angga | anncode.dev` },
             { name: 'twitter:description', content: `Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami.` },
-            { name: 'twitter:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' }
+            { name: 'twitter:image', content: 'https://invwedding-628de.web.app/images/gambar-1.jpg' }
           ]
         })
       }
