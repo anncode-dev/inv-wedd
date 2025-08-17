@@ -1,21 +1,5 @@
 <template>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Siti&Angga | anncode.dev</title>
-
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="Siti&Angga | anncode.dev" />
-        <meta property="og:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
-        <meta property="og:image" content="https://invwedding-628de.web.app/images/gambar-1.jpg" />
-        <meta property="og:url" content="https://invwedding-628de.web.app" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://invwedding-628de.web.app/images/gambar-1.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <link rel="icon" href="/favicon.ico" />
-  
-    </head>
+    
   <div>
     <!-- Intro Section -->
     <IntroSection v-if="guestLoaded" :guest-name="guestName" />
@@ -58,49 +42,6 @@ const photos = ref([
 ])
 const currentIndex = ref(0)
 
-onMounted(async () => {
-  // Fetch data tamu
-  const kode = route.params.kode
-  if (kode) {
-    try {
-      const docRef = doc(db, 'tamu', kode)
-      const docSnap = await getDoc(docRef)
-      if (docSnap.exists()) {
-        guestName.value = docSnap.data().nama_kel || 'Tamu Undangan'
-
-        // Set meta tag dinamis
-        useHead({
-          title: `Siti&Angga | anncode.dev`,
-          meta: [
-            { property: 'og:title', content: `Siti&Angga | anncode.dev` },
-            { property: 'og:description', content: `Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami.` },
-            { property: 'og:image', content: 'https://invwedding-628de.web.app/images/gambar-1.jpg' },
-            { property: 'og:url', content: window.location.href },
-            { property: 'og:type', content: 'website' },
-            { property: 'og:image:width', content: '1200' },
-            { property: 'og:image:height', content: '630' },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:title', content: `Siti&Angga | anncode.dev` },
-            { name: 'twitter:description', content: `Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami.` },
-            { name: 'twitter:image', content: 'https://invwedding-628de.web.app/images/gambar-1.jpg' }
-          ]
-        })
-      }
-    } catch (error) {
-      console.error('Gagal ambil data tamu:', error)
-    }
-  }
-
-  guestLoaded.value = true
-
-  // Init AOS
-  AOS.init({ duration: 800, once: false, offset: -100, easing: 'ease-in-out' })
-
-  // Slideshow otomatis
-  setInterval(() => {
-    currentIndex.value = (currentIndex.value + 1) % photos.value.length
-  }, 5000)
-})
 </script>
 
 <style>

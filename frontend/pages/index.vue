@@ -1,16 +1,16 @@
 <template>
   <Head>
-    <Title> FAB Indonesia </Title>
-    <Meta property="og:title" content="FAB Indonesia" />
+    <Title> Siti&Angga | anncode.dev </Title>
+    <Meta property="og:title" content="Siti&Angga | anncode.dev" />
     <Meta
       property="og:description"
-      content="The Largest and Fastest Growing Tech-Based Creative Business Platform"
+      content="Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami."
     />
     <Meta
       name="description"
-      content="The Largest and Fastest Growing Tech-Based Creative Business Platform"
+      content="Kami mengundang Saudara/i untuk hadir dalam acara pernikahan kami."
     />
-    <Meta property="og:type" content="image" />
+    <Meta property="og:type" content="website" />
     <Meta
       property="og:image"
       content="https://invwedding-628de.web.app/images/gambar-1.jpg"
