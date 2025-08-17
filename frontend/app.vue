@@ -4,8 +4,6 @@
     <div class="relative z-10">
       <IntroSection id="intro" />
       <OurStory />
-      <Gallery id="gallery" />
-      <GroomBride id="wedding-gif" />
       <FooterSection id="footer" />
     </div>
   </div>

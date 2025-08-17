@@ -189,7 +189,7 @@
     </div>
   </section>
 
-   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
       <source src="/video/bagian-ketujuh.mp4" type="video/mp4" />
       Your browser does not support the video tag.
@@ -256,6 +256,95 @@
         </button>
       </div>
     </div>
+  </section>
+
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/kedelapan.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="relative z-10 max-w-2xl">
+      <p class="text-white mb-6 text-4xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Wedding Gift
+      </p>
+      <p class="text-base px-10 leading-relaxed font-[txt]" data-aos="fade-up" data-aos-delay="200">
+        Kehadiran Anda adalah hadiah terindah bagi kami. Namun jika Anda ingin memberikan hadiah, Anda dapat mengirimkannya melalui rekening berikut:
+      </p>
+
+      <div class="mt-10">
+        <div class="text-center mt-5 flex flex-col space-y-2">
+          <button
+            class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
+          >
+            BANK BCA
+          </button>
+        </div>
+
+        <div class="mt-10">
+          <p class="text-lg leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+            No Rekening :
+          </p>
+
+          <!-- Nomor rekening + tombol copy -->
+          <div class="flex flex-col items-center mt-2 space-y-1">
+            <p class="text-2xl font-[txt] pb-2">1234567890</p>
+            <button
+                @click="copyAccount"
+                class="flex justify-center items-center space-x-3 bg-white/10 font-[txt] max-w-max backdrop-blur-sm border border-white text-white px-6 py-2 rounded-full text-base  transition-transform"
+              >
+                <img src="/images/copy.png" alt="Copy Icon" class="w-5 h-5" />
+                <p>
+                  Salin Nomor Rekening
+                </p>
+              </button>
+            <!-- Teks berhasil disalin -->
+            <p v-if="copied" class="text-base  font-[txt] text-green-400 mt-4">Berhasil disalin!</p>
+          </div>
+
+          <p class="text-lg leading-relaxed font-[txt] px-2 mt-2" data-aos="fade-up" data-aos-delay="200">
+            a.n Angga Agnia
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-kesembilan.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="relative z-10 max-w-2xl">
+      <p class="text-white mb-6 text-4xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Doa restu untuk kedua mempelai.
+      </p>
+      <p class="text-base px-10 leading-relaxed font-[txt]" data-aos="fade-up" data-aos-delay="200">
+        Silakan untuk memberikan doa dan ucapan
+      </p>
+
+      <div class="mt-10 px-2">
+        <div class="text-center mt-5 flex flex-col space-y-2">
+          <input
+            type="text"
+            placeholder="Tulis doa dan ucapanmu di sini..."
+            class="bg-white font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full w-full max-w-md"/>
+          <button
+            class="bg-white/10 font-[txt] backdrop-blur-sm border border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105"
+          >
+            Kirim Ucapan
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-kesepuluh.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </section>
 
 </template>
@@ -360,6 +449,22 @@ function increment() {
 
 function decrement() {
   if (guestCount.value > 1) guestCount.value--
+}
+const accountNumber = '1234567890'
+const copied = ref(false)
+
+function copyAccount() {
+  navigator.clipboard.writeText(accountNumber)
+    .then(() => {
+      copied.value = true
+      // hilangkan teks setelah 2 detik
+      setTimeout(() => {
+        copied.value = false
+      }, 2000)
+    })
+    .catch(() => {
+      alert('Gagal menyalin nomor rekening.')
+    })
 }
 </script>
 
