@@ -381,6 +381,8 @@ useHead({
     { name: 'twitter:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' }
   ]
 })
+})
+
 
 
 // Countdown Logic
