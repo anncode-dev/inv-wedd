@@ -29,13 +29,29 @@
 </section>
 
 
-  <section class="relative py-5 bg-black text-white text-center">
+  <section class="relative bg-black text-white text-center">
     <div>
-      <p class="font-[txt] text-4xl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <p class="font-[txt] text-4xl" data-aos="fade-up" data-aos-delay="100">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
     </div>
-    <div class="mt-6 px-10">
-      <p class="text-sm font-semibold mt-2 font-[txt]">
+    <div class="mt-6 px-10" data-aos="fade-up" data-aos-delay="200">
+      <p class="text-sm font-semibold mt-2 font-[txt]" >
         Dengan memohonkan Rahmat dan Ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bride-cewe.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute bottom-24 left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+      <p class="text-white text-6xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Siti Santia
+      </p>
+      <hr class="border-2 border-white mx-40 rounded-full my-6">
+      <p class="text-xl mt-2 leading-relaxed font-[txt] px-5" data-aos="fade-up" data-aos-delay="200">
+        Putri ke empat dari <br> Bapak Koyan & Ibu Enung
       </p>
     </div>
   </section>
