@@ -2,14 +2,14 @@
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="/video/Section-One.MP4" type="video/mp4" />
+      <!-- <source src="/video/Section-One.MP4" type="video/mp4" /> -->
       Your browser does not support the video tag.
     </video>
   </section>
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="/video/Section-Two.MP4" type="video/mp4" />
+      <!-- <source src="/video/Section-Two.MP4" type="video/mp4" /> -->
       Your browser does not support the video tag.
     </video>
   </section>
@@ -27,7 +27,7 @@
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="/video/Section-Three.MP4" type="video/mp4" />
+      <!-- <source src="/video/Section-Three.MP4" type="video/mp4" /> -->
       Your browser does not support the video tag.
     </video>
     <div
@@ -72,7 +72,7 @@
       playsinline
       class="absolute top-0 left-0 w-full h-full object-cover z-0"
     >
-      <source src="/video/Section-Four.MP4" type="video/mp4" />
+      <!-- <source src="/video/Section-Four.MP4" type="video/mp4" /> -->
       Your browser does not support the video tag.
     </video>
 
