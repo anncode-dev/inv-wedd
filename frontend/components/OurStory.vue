@@ -454,33 +454,23 @@ const eventLocation = 'Jl. Contoh No.1, Jakarta'
 const eventStart = '20250828T090000Z' // 28 Agustus 2025, 09:00 UTC
 const eventEnd = '20250828T120000Z'   // 28 Agustus 2025, 12:00 UTC
 
-  function addToCalendar() {
-    const icsContent = `
-  BEGIN:VCALENDAR
-  VERSION:2.0
-  BEGIN:VEVENT
-  SUMMARY:${eventTitle}
-  DESCRIPTION:${eventDescription}
-  LOCATION:${eventLocation}
-  DTSTART:${eventStart}
-  DTEND:${eventEnd}
-  END:VEVENT
-  END:VCALENDAR
-    `.trim()
+function addToCalendar() {
+  const eventTitle = 'Undangan Pernikahan Siti & Angga';
+  const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.';
+  const eventLocation = 'Jl. Contoh No.1, Jakarta';
 
-    // Buat blob ICS
-    const blob = new Blob([icsContent], { type: 'text/calendar' })
-    const url = URL.createObjectURL(blob)
+  // Format tanggal untuk Google Calendar: YYYYMMDDTHHmmssZ
+  const eventStart = '20250828T090000Z'; // 28 Agustus 2025 09:00 UTC
+  const eventEnd = '20250828T120000Z';   // 28 Agustus 2025 12:00 UTC
 
-    // Buat link sementara dan klik
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'undangan.ics'
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
-  }
+  const start = eventStart.replace(/-|:|\.\d+/g, '');
+  const end = eventEnd.replace(/-|:|\.\d+/g, '');
+
+  const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
+
+  window.open(url, "_blank");
+}
+
 
 const isAttending = ref(null) // null = belum pilih, true = hadir, false = tidak hadir
 const guestCount = ref(1)
