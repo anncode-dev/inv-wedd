@@ -9,7 +9,7 @@
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex items-center justify-center text-center">
   <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-    <!-- <source src="/video/bagian-kedua.MP4" type="video/mp4" /> -->
+    <source src="/video/kedua.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="relative z-10 max-w-2xl">
