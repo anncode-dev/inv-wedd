@@ -18,7 +18,7 @@
         لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ 
         اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ 
       </p>
-      <p class="text-xl leading-relaxed font-[txt] px-2" data-aos="fade-up" data-aos-delay="200">
+      <p class="text-base leading-relaxed font-[txt] px-3" data-aos="fade-up" data-aos-delay="200">
         "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
         untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan
         Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
@@ -33,7 +33,7 @@
       <p class="font-[txt] text-4xl" data-aos="fade-up" data-aos-delay="100">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
     </div>
     <div class="mt-6 px-10" data-aos="fade-up" data-aos-delay="200">
-      <p class="text-sm font-semibold mt-2 font-[txt]" >
+      <p class="text-sm mt-2 font-[txt]" >
         Dengan memohonkan Rahmat dan Ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami.
       </p>
     </div>
@@ -69,7 +69,7 @@
       Your browser does not support the video tag.
     </video>
     <div class="absolute bottom-24 left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
-      <p class="text-white text-5xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+      <p class="text-white text-5xl py-2 font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
         Angga Agnia
       </p>
       <hr class="border-2 border-white mx-40 rounded-full my-6">
@@ -116,7 +116,7 @@
         <div class="text-center mt-10">
           <button
             @click="addToCalendar"
-            class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+            class="bg-white/10 backdrop-blur-sm border border-white font-[txt] text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
           >
             Tambah Ke Kalender
           </button>
@@ -445,20 +445,42 @@ onMounted(() => {
   }, 5000)
 })
 
-const eventTitle = "Acara Pernikahan Siti Santia & Angga Agnia"
-const eventLocation = "Kp. Ci Pangawaren RT 09/02 Pasir Panjang, Ciracap"
-const eventDescription = "Undangan pernikahan Siti Santia & Pasangan"
-const eventStart = "2025-12-30T10:00:00" // format ISO 8601
-const eventEnd = "2025-12-30T13:00:00"
+// Data acara
+const eventTitle = 'Undangan Pernikahan Siti Santia & Pasangan'
+const eventDescription = 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.'
+const eventLocation = 'Jl. Contoh No.1, Jakarta'
 
-function addToCalendar() {
-  // Google Calendar
-  const start = eventStart.replace(/-|:|\.\d+/g, "")
-  const end = eventEnd.replace(/-|:|\.\d+/g, "")
-  const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`
-  
-  window.open(url, "_blank")
-}
+// Format tanggal harus YYYYMMDDTHHmmssZ (UTC)
+const eventStart = '20250828T090000Z' // 28 Agustus 2025, 09:00 UTC
+const eventEnd = '20250828T120000Z'   // 28 Agustus 2025, 12:00 UTC
+
+  function addToCalendar() {
+    const icsContent = `
+  BEGIN:VCALENDAR
+  VERSION:2.0
+  BEGIN:VEVENT
+  SUMMARY:${eventTitle}
+  DESCRIPTION:${eventDescription}
+  LOCATION:${eventLocation}
+  DTSTART:${eventStart}
+  DTEND:${eventEnd}
+  END:VEVENT
+  END:VCALENDAR
+    `.trim()
+
+    // Buat blob ICS
+    const blob = new Blob([icsContent], { type: 'text/calendar' })
+    const url = URL.createObjectURL(blob)
+
+    // Buat link sementara dan klik
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'undangan.ics'
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
 
 const isAttending = ref(null) // null = belum pilih, true = hadir, false = tidak hadir
 const guestCount = ref(1)
