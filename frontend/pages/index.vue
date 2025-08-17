@@ -7,15 +7,17 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Siti&Angga | anncode.dev" />
     <meta property="og:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
-    <meta property="og:image" :content="imageUrl" />
-    <meta property="og:url" :content="url" />
+    <meta property="og:image" content="https://inv-wedd.vercel.app/images/gambar-1.jpg" />
+    <meta property="og:url" content="https://inv-wedd.vercel.app/" />
+
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Siti&Angga | anncode.dev" />
     <meta name="twitter:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
-    <meta name="twitter:image" content="https://yourdomain.com/images/gambar-1.jpg" />
+    <meta property="og:image" content="https://inv-wedd.vercel.app/images/gambar-1.jpg" />
+    <meta property="og:url" content="https://inv-wedd.vercel.app/" />
   </head>
   <div class="relative mx-auto max-w-md min-h-screen font-sans text-gray-900 transition-bg duration-700">
     <!-- Konten halaman -->

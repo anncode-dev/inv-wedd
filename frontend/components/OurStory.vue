@@ -357,15 +357,12 @@ import Gallery from '@/components/Gallery.vue'
 import { useHead } from '@vueuse/head'
 
 const route = useRoute()
-const guestName = ref('Tamu Undangan')
 
-// Ambil parameter ?to= dari URL
-onMounted(() => {
-  const to = route.query.to
-  if (to) guestName.value = decodeURIComponent(to)
+const to = useRoute().query.to
+if (to) guestName.value = decodeURIComponent(to)
 
-  // URL gambar absolut
-  const imageUrl = `${window.location.origin}/images/gambar-1.jpg`
+// Gunakan URL absolut statis untuk server-side
+const imageUrl = 'https://inv-wedd.vercel.app/images/gambar-1.jpg'
 
 useHead({
   title: 'Siti&Angga | anncode.dev',
@@ -378,10 +375,10 @@ useHead({
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Siti&Angga | anncode.dev' },
     { name: 'twitter:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
-    { name: 'twitter:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' }
+    { name: 'twitter:image', content: imageUrl }
   ]
 })
-})
+
 
 
 
