@@ -148,7 +148,7 @@
       <source src="/video/bagian-kelima.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="absolute bottom-[170px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+    <div class="absolute bottom-[135px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
       <div class="text-white text-lg font-[txt] leading-relaxed">
         <p class="text-2xl mt-10">Sabtu, 30 Agustus 2025</p>
         <p class="mt-5">Pukul 08.00 WIB s.d Selesai</p>
@@ -171,7 +171,7 @@
       <source src="/video/bagian-keenam.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="absolute bottom-[260px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+    <div class="absolute bottom-[220px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
       <div class="text-white text-lg font-[txt] leading-relaxed">
         <p class="text-2xl mt-10">Sabtu, 30 Agustus 2025</p>
         <p class="mt-5">Pukul 11.00 WIB s.d Selesai</p>
@@ -210,7 +210,7 @@
         <div class="text-center mt-5 flex flex-col space-y-2">
           <button
             @click="setAttendance(true)"
-            :class="['bg-white/10 font-[txt] backdrop-blur-sm border w-full border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105', isAttending === true ? 'bg-white/30' : '']"
+            :class="['bg-white/10 font-[txt] backdrop-blur-sm border w-full border-white text-white px-6 py-3 rounded-full font-semibold transition-transform hover:scale-105', isAttending === true ? 'bg-white/60' : '']"
           >
             Hadir
           </button>
@@ -288,7 +288,7 @@
 
           <!-- Nomor rekening + tombol copy -->
           <div class="flex flex-col items-center mt-2 space-y-1">
-            <p class="text-2xl font-[txt] pb-2">1234567890</p>
+            <p class="text-2xl font-[txt] pb-5">1234567890</p>
             <button
                 @click="copyAccount"
                 class="flex justify-center items-center space-x-3 bg-white/10 font-[txt] max-w-max backdrop-blur-sm border border-white text-white px-6 py-2 rounded-full text-base  transition-transform"
@@ -302,7 +302,7 @@
             <p v-if="copied" class="text-base  font-[txt] text-green-400 mt-4">Berhasil disalin!</p>
           </div>
 
-          <p class="text-lg leading-relaxed font-[txt] px-2 mt-2" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-lg leading-relaxed font-[txt] px-2 mt-5" data-aos="fade-up" data-aos-delay="200">
             a.n Angga Agnia
           </p>
         </div>
