@@ -369,10 +369,10 @@ onMounted(() => {
 
   // Update meta OG
   useHead({
-    title: `Undangan Pernikahan Siti Santia & Angga Agnia`,
+    title: `Siti&Angga - anncode.dev`,
     meta: [
-      { property: 'og:title', content: `Undangan Pernikahan ${guestName.value} & Pasangan` },
-      { property: 'og:description', content: `Kami mengundang ${guestName.value} untuk hadir dalam acara pernikahan kami.` },
+      { property: 'og:title', content: `Siti&Angga - anncode.dev` },
+      { property: 'og:description', content: `Hai, Kamu diundang pada acara pesta pernikahan kami - Pernikahan Siti&Angga - Sabtu, 30 Agustus 2025` },
       { property: 'og:image', content: imageUrl },
       { property: 'og:url', content: window.location.href },
       { property: 'og:type', content: 'website' },    ]

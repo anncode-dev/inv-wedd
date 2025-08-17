@@ -1,54 +1,72 @@
 <template>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Siti&Angga | anncode.dev</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Siti&Angga | anncode.dev" />
+    <meta property="og:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
+    <meta property="og:image" :content="imageUrl" />
+    <meta property="og:url" :content="url" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Siti&Angga | anncode.dev" />
+    <meta name="twitter:description" content="Kami mengundang Anda untuk hadir dalam acara pernikahan kami." />
+    <meta name="twitter:image" content="https://yourdomain.com/images/gambar-1.jpg" />
+  </head>
   <div class="relative mx-auto max-w-md min-h-screen font-sans text-gray-900 transition-bg duration-700">
-    <!-- Background fixed -->
-    <div
-      class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-      :style="{
-        backgroundImage: `url(${bgDefault})`,
-      }"
-    ></div>
-
-    <!-- Overlay hitam transparan -->
-    <div class="fixed inset-0 -z-5 bg-black opacity-50"></div>
-
     <!-- Konten halaman -->
     <div class="relative z-10">
       <IntroSection id="intro" />
-      <OurStory/>
-      <Gallery id="gallery" />
-      <GroomBride id="wedding-gif" />
+      <OurStory />
       <FooterSection id="footer" />
     </div>
   </div>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { onMounted } from 'vue'
-
 
 import IntroSection from '@/components/IntroSection.vue'
 import OurStory from '@/components/OurStory.vue'
-import EventDetails from '@/components/EventDetails.vue'
-import MapLocation from '@/components/MapLocation.vue'
 import Gallery from '@/components/Gallery.vue'
+import GroomBride from '@/components/GroomBride.vue'
 import FooterSection from '@/components/FooterSection.vue'
 
-const bgDefault = 'https://plus.unsplash.com/premium_photo-1675851210850-de5525809dd9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+const imageUrl = `${window.location.origin}/images/gambar-1.jpg`
+const url = window.location.href;
+
+// Daftar foto slideshow
+const photos = ref([
+  'https://plus.unsplash.com/premium_photo-1675851211463-7b04cd066e10?q=80&w=687&auto=format&fit=crop',
+  'https://plus.unsplash.com/premium_photo-1675851211519-fc13d860e103?q=80&w=687&auto=format&fit=crop',
+  'https://plus.unsplash.com/premium_photo-1675851211768-f8b9296ed7bd?q=80&w=687&auto=format&fit=crop',
+])
+
+const currentIndex = ref(0)
 
 onMounted(() => {
   AOS.init({
-  duration: 800,
-  once: false,
-  offset: -300,
-  easing: 'ease-in-out',
-})
+    duration: 800,
+    once: false,
+    offset: -100,
+    easing: 'ease-in-out',
+  })
+
+  // Slideshow otomatis setiap 5 detik
+  setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % photos.value.length
+  }, 5000)
 })
 </script>
 
 <style>
 .transition-bg {
-  transition: background-image 0.7s ease-in-out;
+  transition: background-image 0.1s ease-in-out;
 }
 </style>
