@@ -80,8 +80,6 @@
     </div>
   </section>
 
-  
-
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex flex-col items-center justify-center text-center">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
       <source src="/video/bagian-ketiga.mp4" type="video/mp4" />
@@ -146,7 +144,28 @@
     </div>
   </section>
 
-
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex flex-col items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-kelima.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute bottom-[170px] left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+      <div class="text-white text-lg font-[txt] leading-relaxed">
+        <p class="text-2xl mt-10">Sabtu, 30 Agustus 2025</p>
+        <p class="mt-5">Pukul 08.00 WIB s.d Selesai</p>
+        <p class="mt-5">Bertempat di <br> Kp. Ci Pangawaren RT 09/02 <br> Pasir Panjang, Ciracap</p>
+        <div class="text-center mt-10">
+          <button
+            @click="addToCalendar"
+            class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+          >
+            Lihat Peta Lokasi
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </section>
 
 </template>
 
