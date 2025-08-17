@@ -56,20 +56,46 @@
     </div>
   </section>
 
+  <section class="relative bg-black text-white text-center">
+    <div class="px-10">
+      <p class="text-7xl font-semibold font-[txt]" >
+        &
+      </p>
+    </div>
+  </section>
+
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <!-- <source src="/video/Section-Three.MP4" type="video/mp4" /> -->
+      <source src="/video/bride-cowo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute bottom-24 left-0 right-0 text-center z-10 max-w-2xl mx-auto px-4">
+      <p class="text-white text-5xl font-[hdr] leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Angga Agnia
+      </p>
+      <hr class="border-2 border-white mx-40 rounded-full my-6">
+      <p class="text-xl mt-2 leading-relaxed font-[txt] px-5" data-aos="fade-up" data-aos-delay="200">
+        Putri ke empat dari <br> Bapak Joni & Ibu Erna
+      </p>
+    </div>
+  </section>
+
+  
+
+  <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700 flex flex-col items-center justify-center text-center">
+    <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="/video/bagian-ketiga.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div
       ref="countdownRef"
-      class="countdown pt-20 mb-10 mt-52 "
+      class="countdown"
     >
-      <div class="">
+      <div class="mb-10 mt-20">
         <p class="text-4xl text-center font-[hdr] text-white" data-aos="zoom-in">Hari Yang Ditunggu</p>
         <hr class="w-24 mx-auto my-4 border-t-2 border-white/30" data-aos="zoom-in" />
       </div>
-      <div class="flex justify-center space-x-6 mb-8  bg-white/10 mt-5 backdrop-blur-sm border-2 border-white text-white  py-3  font-semibold transition-transform hover:scale-105" data-aos="zoom-in">
+      <div class="flex  justify-center space-x-6 px-5 bg-white/10 backdrop-blur-sm border-2 border-white text-white py-5  font-semibold transition-transform hover:scale-105" data-aos="zoom-in">
         <div class="text-center ">
           <p class="text-6xl text-white font-bold">{{ days }}</p>
           <p class="text-sm mt-2 text-white/80">Hari</p>
@@ -87,11 +113,18 @@
           <p class="text-sm mt-2 text-white/80">Detik</p>
         </div>
       </div>
-      <div class="flex flex-col items-center">
-  <p class="text-2xl text-center font-[txt]  text-white/90" data-aos="zoom-in">Save The Date</p>
-  <div class="w-px h-20 bg-white/80 mt-4"></div>
-</div>
-</div>
+        <div class="flex flex-col items-center mt-10">
+          <p class="text-2xl text-center font-[txt]  text-white/90" data-aos="zoom-in">Save The Date</p>
+        </div>  
+        <div class="text-center mt-10">
+          <button
+            @click="addToCalendar"
+            class="bg-white/10 backdrop-blur-sm border border-white text-white px-6 py-3 rounded-md font-semibold transition-transform hover:scale-105"
+          >
+            Tambah Ke Kalender
+          </button>
+        </div>
+    </div>
   </section>
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden">
@@ -103,7 +136,7 @@
       playsinline
       class="absolute top-0 left-0 w-full h-full object-cover z-0"
     >
-      <!-- <source src="/video/Section-Four.MP4" type="video/mp4" /> -->
+      <source src="/video/bagian-keempat.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
@@ -128,7 +161,7 @@ const days = ref(0)
 const hours = ref(0)
 const minutes = ref(0)
 const seconds = ref(0)
-const targetDate = new Date('2025-08-10T00:00:00')
+const targetDate = new Date('2025-08-30T00:00:00')
 let countdownInterval = null
 
 function updateCountdown() {
@@ -187,6 +220,21 @@ onMounted(() => {
     currentIndex.value = (currentIndex.value + 1) % photos.value.length
   }, 5000)
 })
+
+const eventTitle = "Acara Pernikahan Siti Santia & Angga Agnia"
+const eventLocation = "Kp. Ci Pangawaren RT 09/02 Pasir Panjang, Ciracap"
+const eventDescription = "Undangan pernikahan Siti Santia & Pasangan"
+const eventStart = "2025-12-30T10:00:00" // format ISO 8601
+const eventEnd = "2025-12-30T13:00:00"
+
+function addToCalendar() {
+  // Google Calendar
+  const start = eventStart.replace(/-|:|\.\d+/g, "")
+  const end = eventEnd.replace(/-|:|\.\d+/g, "")
+  const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${start}/${end}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`
+  
+  window.open(url, "_blank")
+}
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
   <section id="gallery" class="max-w-md mx-auto px-4 mt-10">
 
     <!-- Preview Image -->
-    <div class="mb-6 w-full h-56 rounded-lg overflow-hidden shadow-lg">
+    <div class="mb-6 w-full h-96 rounded-lg overflow-hidden shadow-lg">
       <img
         :src="activeImage"
         alt="Preview"
@@ -48,12 +48,13 @@ import { Autoplay, Pagination } from 'swiper/modules'
 
 // Image data
 const images = ref([
-  'https://plus.unsplash.com/premium_photo-1675851210855-e7727076e829?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://plus.unsplash.com/premium_photo-1675851210742-1502250d37fa?q=80&w=619&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://plus.unsplash.com/premium_photo-1675851211768-ceefde71c8bb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://plus.unsplash.com/premium_photo-1675851210020-045950ac0215?q=80&w=673&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://plus.unsplash.com/premium_photo-1675851211768-ceefde71c8bb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://plus.unsplash.com/premium_photo-1675851211463-7b04cd066e10?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  '/images/gambar-1.jpg',
+  '/images/gambar-2.jpg',
+  '/images/gambar-3.jpg',
+  '/images/gambar-4.jpg',
+  '/images/gambar-5.jpg',
+  '/images/gambar-6.jpg',
+  '/images/gambar-7.jpg',
 ])
 
 // Preview image
