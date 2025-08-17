@@ -1,8 +1,12 @@
 <template>
   <section
     v-if="showIntro"
-    :class="['relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700', { 'opacity-0 pointer-events-none': hideIntro }]"
+    :class="[
+      'relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700',
+      { 'opacity-0 pointer-events-none': hideIntro }
+    ]"
   >
+    <!-- Background Video -->
     <video
       ref="bgVideo"
       autoplay
@@ -14,7 +18,7 @@
       Your browser does not support the video tag.
     </video>
 
-
+    <!-- Content -->
     <div
       class="absolute bottom-28 left-0 right-0 text-center z-20 px-4 transition-opacity duration-500"
       :class="{ 'opacity-100': show, 'opacity-0': !show }"
@@ -32,13 +36,13 @@
 </template>
 
 <script setup>
-import { ref, nextTick, onMounted } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 
 const show = ref(false)
 const showIntro = ref(true)
 const hideIntro = ref(false)
 const guestName = ref('Tamu Undangan')
-const audio = ref(null)
+let audio = null
 
 const musicUrl = '/music/music.mp3'
 
@@ -47,7 +51,7 @@ onMounted(() => {
   const to = params.get('to')
   if (to) guestName.value = decodeURIComponent(to)
 
-  // Lock scroll (html + body)
+  // Lock scroll
   document.documentElement.classList.add('noscroll')
   document.body.classList.add('noscroll')
 
@@ -56,21 +60,17 @@ onMounted(() => {
   }, 500)
 })
 
+// Play musik saat klik tombol
 async function handleOpenInvitation() {
-  if (!audio.value) {
-    audio.value = new Audio(musicUrl)
-    audio.value.loop = true
+  if (!audio) {
+    audio = new Audio(musicUrl)
+    audio.loop = true
   }
-  audio.value.play().catch((e) => {
-    console.warn('Autoplay gagal:', e)
-  })
+  audio.play().catch((e) => console.warn('Autoplay gagal:', e))
 
   hideIntro.value = true
-
   await new Promise((resolve) => setTimeout(resolve, 700))
-
   showIntro.value = false
-
   await nextTick()
 
   // Unlock scroll
@@ -87,6 +87,30 @@ async function handleOpenInvitation() {
     }
   }, 600)
 }
+
+// 🔴 Stop / pause musik saat user keluar tab
+function handleVisibilityChange() {
+  if (!audio) return
+  if (document.hidden) {
+    audio.pause()
+  } else {
+    audio.play().catch(() => {}) // opsional: play lagi saat kembali
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+})
+
+onUnmounted(() => {
+  if (audio) {
+    audio.pause()
+    audio.src = ''
+    audio.load()
+    audio = null
+  }
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
+})
 </script>
 
 <style>
@@ -95,31 +119,4 @@ body.noscroll {
   overflow: hidden !important;
   height: 100% !important;
 }
-
-.svg-text-outline {
-    fill: none;
-    stroke: #472f1a;
-    stroke-width: 18;
-    font-size: 280px;
-    font-family: 'SNPro', sans-serif;
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 0;
-    animation: drawText 3s  infinite;
-  }
-
-  .svg-text-fill {
-    fill: white;
-    stroke: none;
-    font-size: 280px;
-    font-family: 'SNPro', sans-serif;
-  }
-
-  @keyframes drawText {
-    0% {
-      stroke-dashoffset: 2000;
-    }
-    100% {
-      stroke-dashoffset: 100;
-    }
-  }
 </style>
