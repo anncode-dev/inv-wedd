@@ -2,7 +2,7 @@
 
   <section class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700">
     <video ref="bgVideo" autoplay muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-      <!-- <source src="/video/Section-One.MP4" type="video/mp4" /> -->
+      <source src="/video/bagian-satu.MP4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </section>
