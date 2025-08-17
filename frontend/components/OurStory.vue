@@ -367,16 +367,19 @@ onMounted(() => {
   // URL gambar absolut
   const imageUrl = `${window.location.origin}/images/gambar-1.jpg`
 
-  // Update meta OG
-  useHead({
-    title: `Siti&Angga - anncode.dev`,
-    meta: [
-      { property: 'og:title', content: `Siti&Angga - anncode.dev` },
-      { property: 'og:description', content: `Hai, Kamu diundang pada acara pesta pernikahan kami - Pernikahan Siti&Angga - Sabtu, 30 Agustus 2025` },
-      { property: 'og:image', content: imageUrl },
-      { property: 'og:url', content: window.location.href },
-      { property: 'og:type', content: 'website' },    ]
-  })
+useHead({
+  title: 'Siti&Angga | anncode.dev',
+  meta: [
+    { property: 'og:title', content: 'Siti&Angga | anncode.dev' },
+    { property: 'og:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
+    { property: 'og:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' },
+    { property: 'og:url', content: 'https://inv-wedd.vercel.app/' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Siti&Angga | anncode.dev' },
+    { name: 'twitter:description', content: 'Kami mengundang Anda untuk hadir dalam acara pernikahan kami.' },
+    { name: 'twitter:image', content: 'https://inv-wedd.vercel.app/images/gambar-1.jpg' }
+  ]
 })
 
 
