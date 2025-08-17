@@ -354,6 +354,31 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Gallery from '@/components/Gallery.vue'
+import { useHead } from '@vueuse/head'
+
+const route = useRoute()
+const guestName = ref('Tamu Undangan')
+
+// Ambil parameter ?to= dari URL
+onMounted(() => {
+  const to = route.query.to
+  if (to) guestName.value = decodeURIComponent(to)
+
+  // URL gambar absolut
+  const imageUrl = `${window.location.origin}/images/gambar-1.jpg`
+
+  // Update meta OG
+  useHead({
+    title: `Undangan Pernikahan Siti Santia & Angga Agnia`,
+    meta: [
+      { property: 'og:title', content: `Undangan Pernikahan ${guestName.value} & Pasangan` },
+      { property: 'og:description', content: `Kami mengundang ${guestName.value} untuk hadir dalam acara pernikahan kami.` },
+      { property: 'og:image', content: imageUrl },
+      { property: 'og:url', content: window.location.href },
+      { property: 'og:type', content: 'website' },    ]
+  })
+})
+
 
 // Countdown Logic
 const days = ref(0)
@@ -466,6 +491,7 @@ function copyAccount() {
       alert('Gagal menyalin nomor rekening.')
     })
 }
+
 </script>
 
 <style scoped>
