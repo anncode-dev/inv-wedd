@@ -38,13 +38,13 @@ async function generateLink() {
 Bismillahirrahmanirrahim
 Assalamu'alaikum Warahmatullahi Wabarakatuh
 
-Yth. Bpk/Ibu/Sdr/i ${nama_kel.value.toUpperCase()}, 
+Yth. Bpk/Ibu/Sdr/i ${nama_kel.value.toUpperCase()} & ${nama_pasangan.value.toUpperCase()}, 
 
 Dengan mengharap ridha dan rahmat Allah SWT, serta tanpa mengurangi rasa hormat. Perkenankan kami mengundang Bpk/Ibu/Sdr/i untuk hadir di acara pernikahan kami pada:
 
-Nama: ${nama_kel.value} & ${nama_pasangan.value}
+Nama: Siti Santia & Angga Agnia
 Hari/Tgl: Sabtu, 30 Agustus 2025
-Pukul: 08.00 s.d. selesai
+Pukul: 08.00 s.d. Selesai
 Lokasi: Kp. Ci Pangawaren RT 09/02, Pasir Panjang, Ciracap
 
 Merupakan suatu kehormatan bagi kami apabila Bpk/Ibu/Sdr/i dapat menghadiri/menyaksikan prosesi pernikahan kami pada tautan dibawah ini:
