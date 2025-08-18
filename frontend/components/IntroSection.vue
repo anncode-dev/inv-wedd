@@ -20,7 +20,7 @@
       class="absolute bottom-28 left-0 right-0 text-center z-20 px-4 transition-opacity duration-500"
     >
       <p class="text-base font-[txt]">Kepada Yth.</p>
-      <p class="text-xl font-semibold mt-2 font-[txt]">{{ guestName }}</p>
+      <p class="text-xl font-semibold mt-2 font-[txt]">{{ NamaTamu }}</p>
       <button
         @click="handleOpenInvitation"
         class="bg-white/10 backdrop-blur-sm text-sm border border-white text-white px-6 py-3 mt-5 rounded-md transition-transform hover:scale-105 font-[txt]"
@@ -33,16 +33,16 @@
 
 <script setup>
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 
-// 🔹 Terima props dari parent ([kode].vue)
-const props = defineProps({
-  guestName: {
-    type: String,
-    default: 'Tamu Undangan'
-  }
-})
+// Ambil query dari router
+const route = useRoute()
+const NamaTamu = ref(route.query.to || 'Tamu Undangan') 
+console.log(`Guest Name: ${NamaTamu.value}`);
+const Tamu = NamaTamu.value || 'Tamu Undangan'
 
-const show = ref(false)
+
+// Audio dan kontrol intro
 const showIntro = ref(true)
 const hideIntro = ref(false)
 let audio = null

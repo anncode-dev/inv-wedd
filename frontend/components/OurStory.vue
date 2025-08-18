@@ -446,8 +446,8 @@
 
     const route = useRoute()
 
-    const to = useRoute().query.to
-    if (to) guestName.value = decodeURIComponent(to)
+    // const to = useRoute().query.to
+    // if (to) NamaTamu.value = decodeURIComponent(to)
 
 
     // Countdown Logic

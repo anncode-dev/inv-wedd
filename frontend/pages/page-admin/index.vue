@@ -9,7 +9,10 @@
 
     <textarea v-model="ucapan_text" placeholder="Teks Undangan" class="textarea mt-2" readonly></textarea>
 
-    <button @click="simpanDanSalin" class="btn mt-4 bg-green-600">Simpan & Salin Undangan</button>
+    <div v-if="link_tamu" class="flex gap-2 mt-4">
+      <button @click="salinTeks" class="btn bg-blue-600">Salin Teks</button>
+      <button @click="resetForm" class="btn bg-gray-600">Tambah Nama Tamu Lain</button>
+    </div>
   </section>
 </template>
 
@@ -23,20 +26,13 @@ const nama_pasangan = ref('')
 const link_tamu = ref('')
 const ucapan_text = ref('')
 
-// 🔹 Generate link dan teks undangan
-function generateLink() {
+async function generateLink() {
   if (!nama_kel.value || !nama_pasangan.value) return alert('Nama tamu dan pasangan wajib diisi!')
 
-  // generate kode unik acak 6 digit
-  const kode = Math.floor(100000 + Math.random() * 900000)
-
-  // ambil domain saat ini
   const origin = window.location.origin
+  const param = encodeURIComponent(`${nama_kel.value} & ${nama_pasangan.value}`)
+  link_tamu.value = `${origin}/?to=${param}`
 
-  // buat link undangan dinamis
-  link_tamu.value = `${origin}/${kode}`
-
-  // buat teks undangan otomatis
   ucapan_text.value = `${nama_kel.value} & ${nama_pasangan.value}
 
 Bismillahirrahmanirrahim
@@ -58,27 +54,40 @@ ${link_tamu.value}
 Kami juga mengharapkan ucapan, harapan, serta doa Bpk/Ibu/Sdr/i untuk kami.
 
 Atas perhatiannya kami ucapkan terimakasih.`
-}
-
-// 🔹 Simpan ke Firestore & salin ke clipboard
-async function simpanDanSalin() {
-  if (!link_tamu.value) return alert('Silakan generate link terlebih dahulu!')
 
   // Simpan ke Firestore
-  await setDoc(doc(db, 'tamu', link_tamu.value.split('/').pop()), {
-    nama_kel: nama_kel.value,
-    nama_pasangan: nama_pasangan.value,
-    link_tamu: link_tamu.value,
-    ucapan_text: ucapan_text.value
-  })
+  const docId = `${nama_kel.value}_${nama_pasangan.value}`.replace(/\s+/g, '_')
+  try {
+    await setDoc(doc(db, 'tamu', docId), {
+      nama_kel: nama_kel.value,
+      nama_pasangan: nama_pasangan.value,
+      link_tamu: link_tamu.value,
+      ucapan_text: ucapan_text.value
+    })
+    alert('Tamu berhasil disimpan & teks undangan di-generate!')
+  } catch (err) {
+    alert('Gagal menyimpan tamu! ' + err.message)
+  }
+}
 
-  // Salin teks undangan ke clipboard
+function salinTeks() {
   if (!ucapan_text.value) return alert('Teks undangan kosong!')
-  navigator.clipboard.writeText(ucapan_text.value)
-    .then(() => alert('Tamu berhasil disimpan & teks undangan disalin!'))
-    .catch(() => alert('Tamu tersimpan tapi gagal menyalin teks undangan'))
+  try {
+    navigator.clipboard.writeText(ucapan_text.value)
+    alert('Teks undangan berhasil disalin!')
+  } catch (err) {
+    // fallback untuk browser lama
+    const el = document.createElement('textarea')
+    el.value = ucapan_text.value
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+    alert('Teks undangan berhasil disalin (fallback)!')
+  }
+}
 
-  // Reset form
+function resetForm() {
   nama_kel.value = ''
   nama_pasangan.value = ''
   link_tamu.value = ''
@@ -87,14 +96,9 @@ async function simpanDanSalin() {
 </script>
 
 <style>
-.input {
-  display:block; width:100%; margin-top:8px; padding:8px; border-radius:6px; border:1px solid #ccc
-}
-.textarea {
-  display:block; width:100%; margin-top:8px; padding:8px; border-radius:6px; border:1px solid #ccc; min-height:100px
-}
-.btn {
-  padding:8px 16px; border:none; border-radius:6px; background:#4f46e5; color:white; cursor:pointer
-}
-.bg-green-600 { background:#16a34a; }
+.input { display:block; width:100%; margin-top:8px; padding:8px; border-radius:6px; border:1px solid #ccc }
+.textarea { display:block; width:100%; margin-top:8px; padding:8px; border-radius:6px; border:1px solid #ccc; min-height:100px }
+.btn { padding:8px 16px; border:none; border-radius:6px; background:#4f46e5; color:white; cursor:pointer }
+.bg-gray-600 { background:#4b5563; }
+.bg-blue-600 { background:#2563eb; }
 </style>
