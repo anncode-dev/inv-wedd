@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="showIntro"
-    class="relative min-h-screen px-6 text-white overflow-hidden transition-opacity duration-700"
+    class="relative min-h-screen px-6 text-white transition-opacity duration-700"
     :class="{ 'opacity-0 pointer-events-none': hideIntro }"
   >
     <!-- Background Video -->
@@ -35,20 +35,40 @@
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-// Ambil query dari router
 const route = useRoute()
 const NamaTamu = ref(route.query.to || 'Tamu Undangan') 
-console.log(`Guest Name: ${NamaTamu.value}`);
-const Tamu = NamaTamu.value || 'Tamu Undangan'
 
-
-// Audio dan kontrol intro
+// Audio & intro
 const showIntro = ref(true)
 const hideIntro = ref(false)
 let audio = null
 const musicUrl = '/music/music.mp3'
 
-// Fungsi tombol "Buka Undangan"
+// Scroll lock dengan posisi tetap
+let scrollPos = 0
+function lockScroll() {
+  scrollPos = window.scrollY
+  document.body.style.position = 'fixed'
+  document.body.style.top = `-${scrollPos}px`
+  document.body.style.left = '0'
+  document.body.style.right = '0'
+  document.body.style.overflow = 'hidden'
+}
+
+function unlockScroll() {
+  document.body.style.position = ''
+  document.body.style.top = ''
+  document.body.style.left = ''
+  document.body.style.right = ''
+  document.body.style.overflow = ''
+  window.scrollTo(0, scrollPos)
+}
+
+// Jalankan lock saat intro muncul
+onMounted(() => {
+  if (showIntro.value) lockScroll()
+})
+
 async function handleOpenInvitation() {
   if (!audio) {
     audio = new Audio(musicUrl)
@@ -61,8 +81,7 @@ async function handleOpenInvitation() {
   showIntro.value = false
   await nextTick()
 
-  document.documentElement.classList.remove('noscroll')
-  document.body.classList.remove('noscroll')
+  unlockScroll()
 
   const el = document.getElementById('our-story')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -85,11 +104,3 @@ onUnmounted(() => {
   document.removeEventListener('visibilitychange', handleVisibilityChange)
 })
 </script>
-
-<style>
-html.noscroll,
-body.noscroll {
-  overflow: hidden !important;
-  height: 100% !important;
-}
-</style>
